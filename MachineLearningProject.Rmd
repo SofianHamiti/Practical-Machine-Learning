@@ -55,7 +55,7 @@ training.test  <- training[-partition,]
 ```
 
 ###Fitting a Random Forests model
-```{r}
+```{r, results=TRUE}
 model <- train(training.train[,-57],
                        training.train$classe,
                        tuneGrid=data.frame(mtry=3),
@@ -64,7 +64,7 @@ model <- train(training.train[,-57],
 ```
 
 ###Confusion Matrix for testing set
-```{r}
+```{r, results=TRUE}
 confusionMatrix(predict(model,
                         newdata=training.test[,-57]),
                 training.test$classe
@@ -73,7 +73,7 @@ confusionMatrix(predict(model,
 Accuracy: 0.9964, Kappa statistic: 0.9955.
 We can consider the model as really good.
 
-```{r}
+```{r, results=TRUE}
 plot(varImp(model))
 ```
 
